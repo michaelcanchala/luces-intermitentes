@@ -1,0 +1,10 @@
+vendor_name = ModelSim
+source_file = 1, C:/altera/13.1/lucesintermitentes/lucesintermitentes.bdf
+source_file = 1, C:/altera/13.1/lucesintermitentes/db/lucesintermitentes.cbx.xml
+design_name = lucesintermitentes
+instance = comp, \LI~output\, LI~output, lucesintermitentes, 1
+instance = comp, \LD~output\, LD~output, lucesintermitentes, 1
+instance = comp, \CLK~input\, CLK~input, lucesintermitentes, 1
+instance = comp, \CLK~inputclkctrl\, CLK~inputclkctrl, lucesintermitentes, 1
+instance = comp, \SI~input\, SI~input, lucesintermitentes, 1
+instance = comp, \SD~input\, SD~input, lucesintermitentes, 1

@@ -1,0 +1,10 @@
+|lucesintermitentes
+LI <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst6.CLK
+SD => inst4.IN0
+SD => inst1.IN0
+SI => inst.IN1
+SI => inst5.IN0
+LD <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,198 @@
+$comment
+	File created using the following command:
+		vcd file lucesintermitentes.msim.vcd -direction
+$end
+$date
+	Mon Dec 11 15:56:56 2023
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module lucesintermitentes_vlg_vec_tst $end
+$var reg 1 ! CLK $end
+$var reg 1 " SD $end
+$var reg 1 # SI $end
+$var wire 1 $ LD $end
+$var wire 1 % LI $end
+$var wire 1 & sampler $end
+$scope module i1 $end
+$var wire 1 ' gnd $end
+$var wire 1 ( vcc $end
+$var wire 1 ) unknown $end
+$var tri1 1 * devclrn $end
+$var tri1 1 + devpor $end
+$var tri1 1 , devoe $end
+$var wire 1 - LI~output_o $end
+$var wire 1 . LD~output_o $end
+$var wire 1 / CLK~input_o $end
+$var wire 1 0 inst6~0_combout $end
+$var wire 1 1 inst6~feeder_combout $end
+$var wire 1 2 inst6~q $end
+$var wire 1 3 inst8~0_combout $end
+$var wire 1 4 inst8~q $end
+$var wire 1 5 inst9~0_combout $end
+$var wire 1 6 inst9~feeder_combout $end
+$var wire 1 7 inst9~q $end
+$var wire 1 8 inst10~0_combout $end
+$var wire 1 9 inst10~q $end
+$var wire 1 : inst11~0_combout $end
+$var wire 1 ; inst11~feeder_combout $end
+$var wire 1 < inst11~q $end
+$var wire 1 = inst12~0_combout $end
+$var wire 1 > inst12~q $end
+$var wire 1 ? inst13~0_combout $end
+$var wire 1 @ inst13~feeder_combout $end
+$var wire 1 A inst13~q $end
+$var wire 1 B inst14~0_combout $end
+$var wire 1 C inst14~q $end
+$var wire 1 D inst15~0_combout $end
+$var wire 1 E inst15~feeder_combout $end
+$var wire 1 F inst15~q $end
+$var wire 1 G inst16~0_combout $end
+$var wire 1 H inst16~q $end
+$var wire 1 I inst17~0_combout $end
+$var wire 1 J inst17~feeder_combout $end
+$var wire 1 K inst17~q $end
+$var wire 1 L inst18~0_combout $end
+$var wire 1 M inst18~q $end
+$var wire 1 N inst19~0_combout $end
+$var wire 1 O inst19~feeder_combout $end
+$var wire 1 P inst19~q $end
+$var wire 1 Q inst20~0_combout $end
+$var wire 1 R inst20~q $end
+$var wire 1 S inst21~0_combout $end
+$var wire 1 T inst21~feeder_combout $end
+$var wire 1 U inst21~q $end
+$var wire 1 V inst22~0_combout $end
+$var wire 1 W inst22~q $end
+$var wire 1 X inst23~0_combout $end
+$var wire 1 Y inst23~feeder_combout $end
+$var wire 1 Z inst23~q $end
+$var wire 1 [ inst24~0_combout $end
+$var wire 1 \ inst24~feeder_combout $end
+$var wire 1 ] inst24~q $end
+$var wire 1 ^ inst25~0_combout $end
+$var wire 1 _ inst25~feeder_combout $end
+$var wire 1 ` inst25~q $end
+$var wire 1 a inst26~0_combout $end
+$var wire 1 b inst26~q $end
+$var wire 1 c inst27~0_combout $end
+$var wire 1 d inst27~feeder_combout $end
+$var wire 1 e inst27~q $end
+$var wire 1 f inst28~0_combout $end
+$var wire 1 g inst28~q $end
+$var wire 1 h inst29~0_combout $end
+$var wire 1 i inst29~feeder_combout $end
+$var wire 1 j inst29~q $end
+$var wire 1 k inst30~0_combout $end
+$var wire 1 l inst30~q $end
+$var wire 1 m inst31~0_combout $end
+$var wire 1 n inst31~feeder_combout $end
+$var wire 1 o inst31~q $end
+$var wire 1 p inst38~0_combout $end
+$var wire 1 q inst38~q $end
+$var wire 1 r inst38~clkctrl_outclk $end
+$var wire 1 s SD~input_o $end
+$var wire 1 t SI~input_o $end
+$var wire 1 u inst~combout $end
+$var wire 1 v inst3~q $end
+$var wire 1 w inst1~combout $end
+$var wire 1 x inst2~q $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+0#
+0$
+0%
+x&
+0'
+1(
+x)
+1*
+1+
+1,
+0-
+0.
+0/
+10
+11
+02
+13
+04
+15
+16
+07
+18
+09
+1:
+1;
+0<
+1=
+0>
+1?
+1@
+0A
+1B
+0C
+1D
+1E
+0F
+1G
+0H
+1I
+1J
+0K
+1L
+0M
+1N
+1O
+0P
+1Q
+0R
+1S
+1T
+0U
+1V
+0W
+1X
+1Y
+0Z
+1[
+1\
+0]
+1^
+1_
+0`
+1a
+0b
+1c
+1d
+0e
+1f
+0g
+1h
+1i
+0j
+1k
+0l
+1m
+1n
+0o
+1p
+0q
+0r
+0s
+0t
+0u
+0v
+0w
+0x
+$end
+#1000000

@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\lucesintermitentes\simulation\qsim
+vlucesintermitentes
+Z1 !s100 z@8Kc]NhQdXakUN35hI0c1
+Z2 IA_99EgPoIX4<:eLz@b@0?3
+Z3 VSSbQIZEC0Xa]I5:f^1UN71
+Z4 dC:\altera\13.1\lucesintermitentes\simulation\qsim
+Z5 w1702328215
+Z6 8lucesintermitentes.vo
+Z7 Flucesintermitentes.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|lucesintermitentes.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1702328216.255000
+Z12 !s107 lucesintermitentes.vo|
+!s101 -O0
+vlucesintermitentes_vlg_check_tst
+!i10b 1
+!s100 oH<1efWO]ZC_E=^hz2B6X2
+Idl=iRhOK<U?i6jDCe`J`B1
+Z13 V=hXGD?_b<^ZHX=nJZ?IK]1
+R4
+Z14 w1702328214
+Z15 8Waveform4.vwf.vt
+Z16 FWaveform4.vwf.vt
+L0 61
+R8
+r1
+!s85 0
+31
+Z17 !s108 1702328216.395000
+Z18 !s107 Waveform4.vwf.vt|
+Z19 !s90 -work|work|Waveform4.vwf.vt|
+!s101 -O0
+R10
+vlucesintermitentes_vlg_sample_tst
+!i10b 1
+!s100 8AhJ`9FW3^R2l]c:dgcGF2
+I3JUkfDV<Y[e1He6:Yo=2:2
+Z20 VAkH^dBjHe?k:n917lkk[N0
+R4
+R14
+R15
+R16
+L0 29
+R8
+r1
+!s85 0
+31
+R17
+R18
+R19
+!s101 -O0
+R10
+vlucesintermitentes_vlg_vec_tst
+!i10b 1
+!s100 n[h?JN>:?IOlCYE6FlVaS0
+IN5GB:;JJ1nXE[QHG5aJ;01
+Z21 V=;Pj8ZQ_S?SF`1zoCo:k;3
+R4
+R14
+R15
+R16
+Z22 L0 183
+R8
+r1
+!s85 0
+31
+R17
+R18
+R19
+!s101 -O0
+R10
