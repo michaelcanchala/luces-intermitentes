@@ -1,0 +1,119 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity Dec_BCD is
+    port (
+        numero : in std_logic_vector(3 downto 0);
+        segmentos : out std_logic_vector(6 downto 0)
+    );
+end Dec_BCD;
+
+architecture arch_Dec_BCD of Dec_BCD is
+begin
+    segmentos <= "0111111" when numero = "0000" else
+                 "0000110" when numero = "0001" else
+                 "1011011" when numero = "0010" else
+                 "1001111" when numero = "0011" else
+                 "1100110" when numero = "0100" else
+                 "1101101" when numero = "0101" else
+                 "1111100" when numero = "0110" else
+                 "0000111" when numero = "0111" else
+                 "1111111" when numero = "1000" else
+                 "1100111" when numero = "1001" else
+                 "0000000";
+end arch_Dec_BCD;
+
+-- Memoria con integración del Dec_BCD
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY memory_test IS
+    PORT (
+        clock       : IN  std_logic;
+        reset       : IN  std_logic;
+        address     : IN  std_logic_vector(7 DOWNTO 0);
+        write       : IN  std_logic;
+        data_in     : IN  std_logic_vector(7 DOWNTO 0);
+        data_out    : OUT std_logic_vector(7 DOWNTO 0);
+        segmentos   : OUT std_logic_vector(6 DOWNTO 0)  -- Añadido para la salida de Dec_BCD
+    );
+END memory_test;
+
+ARCHITECTURE Behavioral OF memory_test IS
+
+    COMPONENT Dec_BCD IS
+        PORT (
+            numero : IN std_logic_vector (3 DOWNTO 0);
+            segmentos : OUT std_logic_vector (6 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    -- Señales internas
+    SIGNAL rom_data_out : std_logic_vector(7 DOWNTO 0);
+    SIGNAL ram_data_out : std_logic_vector(7 DOWNTO 0);
+    SIGNAL port_out_00  : std_logic_vector(7 DOWNTO 0);
+    SIGNAL port_out_01  : std_logic_vector(7 DOWNTO 0);
+    SIGNAL bcd_input    : std_logic_vector(3 DOWNTO 0);   -- Para conectar a Dec_BCD
+    SIGNAL segmentos_int : std_logic_vector(6 DOWNTO 0);  -- Señal interna para la salida de Dec_BCD
+
+BEGIN
+
+    -- Instancia del componente ROM
+    ROM_inst : ENTITY work.rom
+        PORT MAP (
+            address  => address,
+            data_out => rom_data_out,
+            clock    => clock
+        );
+
+    -- Instancia del componente RAM
+    RAM_inst : ENTITY work.ram_96
+        PORT MAP (
+            address   => address,
+            data_in   => data_in,
+            Write_WE  => write,
+            clk       => clock,
+            data_out  => ram_data_out
+        );
+
+    -- Instancia del componente de puertos de salida
+    output_ports_inst : ENTITY work.output_ports
+        PORT MAP (
+            clock       => clock,
+            reset       => reset,
+            address     => address,
+            write       => write,
+            data_in     => data_in,
+            port_out_00 => port_out_00,
+            port_out_01 => port_out_01
+        );
+
+    -- Instancia del multiplexor de entrada
+    input_mux_inst : ENTITY work.input_mux
+        PORT MAP (
+            address      => address,
+            rom_data_out => rom_data_out,
+            ram_data_out => ram_data_out,
+            port_in_00   => port_out_00,
+            port_in_01   => port_out_01,
+            data_out     => data_out
+        );
+
+    -- Instancia del componente Dec_BCD
+    Dec_BCD_inst : Dec_BCD
+        PORT MAP (
+            numero    => bcd_input,
+            segmentos => segmentos_int
+        );
+
+    -- Lógica para determinar el valor de `bcd_input`
+    -- Puedes definir cómo obtener el valor BCD según tu lógica
+    -- Aquí, asumimos que los 4 bits menos significativos de la dirección son el valor BCD
+    bcd_input <= address(3 DOWNTO 0);
+
+    -- Conectar la salida de segmentos del Dec_BCD a la salida de la entidad memory_test
+    segmentos <= segmentos_int;
+
+END Behavioral;

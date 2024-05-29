@@ -1,0 +1,115 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY memory_test IS
+    PORT (
+        clock : IN std_logic;
+        reset : IN std_logic;
+        seg : OUT std_logic_vector (6 DOWNTO 0);
+        an : OUT std_logic_vector (3 DOWNTO 0)
+    );
+END memory_test;
+
+ARCHITECTURE Behavioral OF memory_test IS
+    SIGNAL address : std_logic_vector (7 DOWNTO 0);
+    SIGNAL data_out : std_logic_vector (7 DOWNTO 0);
+    SIGNAL port_out_00 : std_logic_vector (7 DOWNTO 0);
+    SIGNAL port_out_01 : std_logic_vector (7 DOWNTO 0);
+    SIGNAL rom_data_out : std_logic_vector (7 DOWNTO 0);
+    SIGNAL ram_data_out : std_logic_vector (7 DOWNTO 0);
+    SIGNAL data_in : std_logic_vector (7 DOWNTO 0);
+    SIGNAL Write_WE : std_logic;
+
+    COMPONENT Dec_BCD
+        PORT (
+            numero : IN std_logic_vector (3 DOWNTO 0);
+            segmentos : OUT std_logic_vector (6 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT input_mux
+        PORT (
+            address : IN std_logic_vector (7 DOWNTO 0);
+            rom_data_out : IN std_logic_vector (7 DOWNTO 0);
+            ram_data_out : IN std_logic_vector (7 DOWNTO 0);
+            port_in_00 : IN std_logic_vector (7 DOWNTO 0);
+            port_in_01 : IN std_logic_vector (7 DOWNTO 0);
+            data_out : OUT std_logic_vector (7 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT output_ports
+        PORT (
+            clock : IN std_logic;
+            reset : IN std_logic;
+            address : IN std_logic_vector (7 DOWNTO 0);
+            write : IN std_logic;
+            data_in : IN std_logic_vector (7 DOWNTO 0);
+            port_out_00 : OUT std_logic_vector (7 DOWNTO 0);
+            port_out_01 : OUT std_logic_vector (7 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT ram_96
+        PORT (
+            address : IN std_logic_vector (7 DOWNTO 0);
+            data_in : IN std_logic_vector (7 DOWNTO 0);
+            Write_WE : IN std_logic;
+            clk : IN std_logic;
+            data_out : OUT std_logic_vector (7 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT rom
+        PORT (
+            address : IN std_logic_vector (7 DOWNTO 0);
+            data_out : OUT std_logic_vector (7 DOWNTO 0);
+            clock : IN std_logic
+        );
+    END COMPONENT;
+
+BEGIN
+    rom_inst : rom PORT MAP (
+        address => address,
+        data_out => rom_data_out,
+        clock => clock
+    );
+
+    ram_inst : ram_96 PORT MAP (
+        address => address,
+        data_in => data_in,
+        Write_WE => Write_WE,
+        clk => clock,
+        data_out => ram_data_out
+    );
+
+    output_ports_inst : output_ports PORT MAP (
+        clock => clock,
+        reset => reset,
+        address => address,
+        write => Write_WE,
+        data_in => data_in,
+        port_out_00 => port_out_00,
+        port_out_01 => port_out_01
+    );
+
+    input_mux_inst : input_mux PORT MAP (
+        address => address,
+        rom_data_out => rom_data_out,
+        ram_data_out => ram_data_out,
+        port_in_00 => port_out_00,
+        port_in_01 => port_out_01,
+        data_out => data_out
+    );
+
+    Dec_BCD_inst : Dec_BCD PORT MAP (
+        numero => data_out(3 DOWNTO 0),
+        segmentos => seg
+    );
+
+    an <= "1110";  -- Para mostrar solo el primer dígito en un display de 7 segmentos
+
+    -- Aquí puedes agregar lógica adicional para manejar el reloj, reinicio y otros
+    -- procesos necesarios para el comportamiento general de tu diseño.
+END Behavioral;
